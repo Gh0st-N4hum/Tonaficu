@@ -2,20 +2,22 @@
 
 using namespace std;
 
-bool is_even(int a)
+int sqr(int x)
 {
-    return a % 2 == 0;
+
+    return x * x;
 }
 
 int main()
 {
-    if (is_even(4))
-    {
-        cout << "even";
-    }
-    else
-    {
 
-        cout << "odd";
-    }
+    int num;
+    cout << "enter a number: ";
+    cin >> num;
+
+    int skwer = sqr(num);
+
+    cout << "The square of " << num << " is " << skwer;
+
+    return 0;
 }
