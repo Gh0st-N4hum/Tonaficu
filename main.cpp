@@ -1,15 +1,21 @@
 #include <iostream>
+
 using namespace std;
 
-int add_func(int a, int b)
+bool is_even(int a)
 {
-    return a - b;
+    return a % 2 == 0;
 }
 
 int main()
 {
+    if (is_even(4))
+    {
+        cout << "even";
+    }
+    else
+    {
 
-    int result = add_func(45, 89);
-    cout << result;
-    return 0;
+        cout << "odd";
+    }
 }
