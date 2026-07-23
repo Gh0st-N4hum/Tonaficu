@@ -1,4 +1,7 @@
 #include <iostream>
+#include <limits>
+#include <stdlib.h>
+#include <sstream>
 
 using namespace std;
 
@@ -10,14 +13,34 @@ int sqr(int x)
 
 int main()
 {
+    char choice;
 
-    int num;
-    cout << "enter a number: ";
-    cin >> num;
+    do
+    {
+        int num;
+        cout << "enter a number: ";
+        cin >> num;
 
-    int skwer = sqr(num);
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            system("cls");
+            cout << "error, enter a valid input: ";
+        }
 
-    cout << "The square of " << num << " is " << skwer;
+        int skwer = sqr(num);
+
+        cout << "The square of " << num << " is " << skwer;
+
+        cout << "\n Do you want to know more square numbers? Y/N" << endl;
+        cin >> choice;
+
+
+
+    } while (choice == 'Y' || choice == 'y');
+
+    cout << "Till you come again...";
 
     return 0;
 }
