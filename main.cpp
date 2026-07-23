@@ -5,6 +5,45 @@
 
 using namespace std;
 
+int compare(int a, int b)
+{
+    if (a > b)
+    {
+        return a;
+    }
+    else if
+        return b;
+    else
+    {
+        cout << "Both numbers are equal. \n";
+        return a;
+    }
+}
+
+int get_valid_number()
+{
+
+    int num;
+
+    while (true)
+    {
+        cout << "\n Enter a fucking number bro: ";
+        cin >> num;
+
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input try again nigga: ";
+        }
+
+        else
+        {
+            return num;
+        }
+    }
+}
+
 int sqr(int x)
 {
 
@@ -32,6 +71,7 @@ int main()
             system("cls");
             cout << "[1] Square a number" << endl;
             cout << "[2] Check if its odd or even" << endl;
+            cout << "[3] See the highest number" << endl;
             cout << "Enter your choice: ";
             cin >> choice;
 
@@ -52,28 +92,8 @@ int main()
 
         if (choice == 1)
         {
-            do
-            {
 
-                cout << "\n Give me number that you want to know its square: ";
-                cin >> num;
-
-                if (cin.fail())
-                {
-
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    system("cls");
-                    cout << "error, enter a valid input: ";
-                    valid_input = false;
-                }
-
-                else
-                {
-                    valid_input = true;
-                }
-
-            } while (!valid_input);
+            num = get_valid_number();
 
             int skwer = sqr(num);
 
@@ -83,31 +103,10 @@ int main()
             cin >> choice1;
         }
         else if (choice == 2)
+
         {
             int num2;
-
-            do
-            {
-
-                system("cls");
-                cout << "Provide me number and let's see if its odd or even: " << endl;
-                cin >> num2;
-
-                if (cin.fail())
-                {
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    system("cls");
-                    cout << "\n error, please try again: ";
-                    valid_input = false;
-                }
-
-                else
-                {
-                    valid_input = true;
-                }
-
-            } while (!valid_input);
+            num2 = get_valid_number();
 
             bool result = odd_or_even(num2);
 
@@ -124,6 +123,20 @@ int main()
             cout << "\n Would you like to do it once again Y/N? \n ";
             cin >> choice1;
         }
+        else if (choice == 3)
+        {
+            int comp_a;
+            int comp_b;
+
+            cout << "\n Enter the first number:";
+            cin >> comp_a;
+
+            cout << "\n Enter the second number:";
+            cin >> comp_b;
+
+            cout << "The highest number between " << comp_a << " and " << comp_b << " is " << compare(comp_a, comp_b);
+        }
+
     } while (choice1 == 'Y' || choice1 == 'y');
 
     cout << "\n Till you come again...";
