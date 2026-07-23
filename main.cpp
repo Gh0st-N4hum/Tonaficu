@@ -11,7 +11,7 @@ int compare(int a, int b)
     {
         return a;
     }
-    else if
+    else if (a < b)
         return b;
     else
     {
@@ -56,39 +56,49 @@ bool odd_or_even(int x)
     return x % 2 == 0;
 }
 
+int menu()
+
+{
+    int choice_num;
+
+    bool valid_input = false;
+    do
+    {
+
+        cout << "\n [1] Square a number" << endl;
+        cout << "\n [2] Check if its odd or even" << endl;
+        cout << "\n [3] See the highest number" << endl;
+        cout << "\n [4] Exit..." << endl;
+        cout << "\n Enter your choice: ";
+        cin >> choice_num;
+
+        if (cin.fail())
+        {
+            system("cls");
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "\n invalid choice, please try again: ";
+            valid_input = false;
+        }
+        else
+        {
+            valid_input = true;
+        }
+
+    } while (!valid_input);
+
+    return choice_num;
+}
+
 int main()
 {
+
     char choice1;
-    bool valid_input = false;
 
     do
     {
         int num;
-        int choice;
-
-        do
-        {
-            system("cls");
-            cout << "[1] Square a number" << endl;
-            cout << "[2] Check if its odd or even" << endl;
-            cout << "[3] See the highest number" << endl;
-            cout << "Enter your choice: ";
-            cin >> choice;
-
-            if (cin.fail())
-            {
-                system("cls");
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "\n invalid choice, please try again: ";
-                valid_input = false;
-            }
-            else
-            {
-                valid_input = true;
-            }
-
-        } while (!valid_input);
+        int choice = menu();
 
         if (choice == 1)
         {
@@ -110,7 +120,7 @@ int main()
 
             bool result = odd_or_even(num2);
 
-            if (result == 1)
+            if (result)
             {
 
                 cout << "The number " << num2 << " is  even \n";
@@ -135,6 +145,14 @@ int main()
             cin >> comp_b;
 
             cout << "The highest number between " << comp_a << " and " << comp_b << " is " << compare(comp_a, comp_b);
+            cout << "\n Would you like to do it once again Y/N? \n ";
+            cin >> choice1;
+        }
+
+        else if (choice == 4)
+        {
+            cout << "Till the next addition of time...";
+            return 0;
         }
 
     } while (choice1 == 'Y' || choice1 == 'y');
